@@ -1,9 +1,13 @@
+import streamlit as st
 import sys
 st.write("Python Executable:", sys.executable)
 st.write("Python Version:", sys.version)
 
+# Debugging: Check Python environment
+st.write("Python Executable:", sys.executable)
+st.write("Python Version:", sys.version)
+
 # Import libraries
-import streamlit as st
 import joblib
 import numpy as np
 import pandas as pd
