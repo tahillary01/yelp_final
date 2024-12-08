@@ -1,3 +1,7 @@
+import sys
+st.write("Python Executable:", sys.executable)
+st.write("Python Version:", sys.version)
+
 # Import libraries
 import streamlit as st
 import joblib
