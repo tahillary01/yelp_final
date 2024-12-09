@@ -166,15 +166,6 @@ user_input_features = pd.DataFrame([{
     'is_in_best_food_city': is_in_best_food_city
 }])
 
-# Predict Button
-if st.button("Predict Rating"):
-    with st.spinner("Calculating..."):
-        # Perform Prediction
-        prediction = model.predict(user_input_features)
-
-        # Output result
-        st.success(f"Predicted Review Rating: {prediction[0]:.2f}")
-
 # Button for "Predict Rating" and Model Loading
 if st.button("Predict Rating"):
     with st.spinner("Loading model..."):
