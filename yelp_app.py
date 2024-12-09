@@ -93,6 +93,18 @@ RestaurantsTableService = 1 if RestaurantsTableService == "Yes" else 0
 RestaurantsGoodForGroups = st.selectbox("Good for groups?", ["Yes", "No"])
 RestaurantsGoodForGroups = 1 if RestaurantsGoodForGroups == "Yes" else 0
 
+latenight = st.selectbox("Is late-night dining available?", ["Yes", "No"])
+latenight = 1 if latenight == "Yes" else 0
+
+DriveThru = st.selectbox("Is there a drive thru?", ["Yes", "No"])
+DriveThru = 1 if DriveThru == "Yes" else 0
+
+Parking_street = st.selectbox("Is street parking available?", ["Yes", "No"])
+Parking_street = 1 if Parking_street == "Yes" else 0
+
+RestaurantsAttire_casual = st.selectbox("Is casual attire acceptable?", ["Yes", "No"])
+RestaurantsAttire_casual = 1 if RestaurantsAttire_casual == "Yes" else 0
+
 # Ambiance Features
 st.write("Select the restaurant's ambiance type:")
 
@@ -104,11 +116,6 @@ intimate = 1 if intimate == "Yes" else 0
 
 classy = st.selectbox("Classy?", ["Yes", "No"])
 classy = 1 if classy == "Yes" else 0
-
-# Dining Time Options
-st.write("Is late-night dining available?")
-latenight = st.selectbox("Select yes or no", ["Yes", "No"])
-latenight = 1 if latenight == "Yes" else 0
 
 st.write("""
 US News Top 15 Best Food Cities:
@@ -130,16 +137,6 @@ US News Top 15 Best Food Cities:
 """)
 is_in_best_food_city = st.selectbox("Is the restaurant located in one of these cities?", ["Yes", "No"])
 is_in_best_food_city = 1 if is_in_best_food_city == "Yes" else 0
-
-st.write("Additional restaurant features:")
-DriveThru = st.selectbox("Drive Thru?", ["Yes", "No"])
-DriveThru = 1 if DriveThru == "Yes" else 0
-
-Parking_street = st.selectbox("Street Parking Available?", ["Yes", "No"])
-Parking_street = 1 if Parking_street == "Yes" else 0
-
-RestaurantsAttire_casual = st.selectbox("Casual Attire?", ["Yes", "No"])
-RestaurantsAttire_casual = 1 if RestaurantsAttire_casual == "Yes" else 0
 
 # Create the input feature array based on the user inputs
 user_input_features = pd.DataFrame([{
