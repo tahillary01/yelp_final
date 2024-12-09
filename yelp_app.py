@@ -110,7 +110,7 @@ classy = 1 if classy == "Yes" else 0
 
 # Dining Time Options
 st.write("Is late-night dining available?")
-latenight = st.selectbox("", ["Yes", "No"])
+latenight = st.selectbox("Select yes or no", ["Yes", "No"])
 latenight = 1 if latenight == "Yes" else 0
 
 st.write("""
