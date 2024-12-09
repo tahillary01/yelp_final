@@ -8,9 +8,6 @@ import joblib
 import numpy as np
 import pandas as pd
 
-# Load the trained model
-model = joblib.load('best_knn_model.pkl')
-
 # Streamlit App UI Title
 st.title("Restaurant Review Rating Predictor")
 
@@ -179,4 +176,16 @@ if st.button("Predict Rating"):
         prediction = model.predict(user_input_features)
 
         # Output result
+        st.success(f"Predicted Review Rating: {prediction[0]:.2f}")
+
+# Button for "Predict Rating" and Model Loading
+if st.button("Predict Rating"):
+    with st.spinner("Loading model..."):
+        # Load the model only when the button is clicked
+        model = joblib.load("best_knn_model.pkl")
+        st.success("Model loaded successfully!")
+        
+    with st.spinner("Calculating..."):
+        # Perform Prediction
+        prediction = model.predict(user_input_features)
         st.success(f"Predicted Review Rating: {prediction[0]:.2f}")
