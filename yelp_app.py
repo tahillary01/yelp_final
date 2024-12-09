@@ -26,15 +26,17 @@ review_count_x = st.number_input("Review Count (User)", min_value=0, value=10)
 average_stars = st.number_input("Average Stars", min_value=0.0, max_value=5.0, value=3.5)
 user_AvgRestaurantCat_rating = st.number_input("User Avg for Restaurant Category Rating", min_value=0.0, max_value=5.0, value=3.0)
 
+st.header("User Review Information")
+
 # Feature Input
 # User-friendly slider for sentiment score
 st.write("""
-How would you rate the sentiment of the user review?  
+How would you rate the sentiment of the user review?
 Slide toward **negative** (-1) if the review was poor, toward **positive** (+1) if the review was great.
 """)
 
 sentiment_score_slider = st.slider(
-    "Sentiment Score", 
+    "Sentiment Score",
     min_value=-1.0,  # -1 represents very negative sentiment
     max_value=1.0,   # +1 represents very positive sentiment
     value=0.0,       # Default to neutral sentiment
@@ -46,7 +48,7 @@ sentiment_score = sentiment_score_slider
 
 # User-friendly slider for hour of day
 st.write("""
-Select the hour of the day when the review was made.  
+Select the hour of the day when the review was made.
 Hours are based on a 24-hour clock (military time).
 """)
 
@@ -55,8 +57,8 @@ hours = [str(i) for i in range(0, 24)]  # Create a list of strings from '0' to '
 
 # Dropdown selection
 hour_of_day = st.selectbox(
-    "Select the Hour", 
-    options=hours, 
+    "Select the Hour",
+    options=hours,
     index=12  # Default to 12 (noon)
 )
 
@@ -88,14 +90,28 @@ RestaurantsDelivery = 1 if RestaurantsDelivery == "Yes" else 0
 HasTV = st.selectbox("Does the restaurant have a TV?", ["Yes", "No"])
 HasTV = 1 if HasTV == "Yes" else 0
 
-RestaurantsReservations = st.selectbox("Does the restaurant take reservations?", ["Yes", "No"])
-RestaurantsReservations = 1 if RestaurantsReservations == "Yes" else 0
-
 RestaurantsTableService = st.selectbox("Is table service available?", ["Yes", "No"])
 RestaurantsTableService = 1 if RestaurantsTableService == "Yes" else 0
 
 RestaurantsGoodForGroups = st.selectbox("Good for groups?", ["Yes", "No"])
 RestaurantsGoodForGroups = 1 if RestaurantsGoodForGroups == "Yes" else 0
+
+# Ambiance Features
+st.write("Select the restaurant's ambiance type:")
+
+touristy = st.selectbox("Touristy?", ["Yes", "No"])
+touristy = 1 if touristy == "Yes" else 0
+
+intimate = st.selectbox("Intimate?", ["Yes", "No"])
+intimate = 1 if intimate == "Yes" else 0
+
+classy = st.selectbox("Classy?", ["Yes", "No"])
+classy = 1 if classy == "Yes" else 0
+
+# Dining Time Options
+st.write("Is late-night dining available?")
+latenight = st.selectbox("", ["Yes", "No"])
+latenight = 1 if latenight == "Yes" else 0
 
 st.write("""
 US News Top 15 Best Food Cities:
@@ -118,22 +134,38 @@ US News Top 15 Best Food Cities:
 is_in_best_food_city = st.selectbox("Is the restaurant located in one of these cities?", ["Yes", "No"])
 is_in_best_food_city = 1 if is_in_best_food_city == "Yes" else 0
 
-# Input Feature Array
+st.write("Additional restaurant features:")
+DriveThru = st.selectbox("Drive Thru?", ["Yes", "No"])
+DriveThru = 1 if DriveThru == "Yes" else 0
+
+Parking_street = st.selectbox("Street Parking Available?", ["Yes", "No"])
+Parking_street = 1 if Parking_street == "Yes" else 0
+
+RestaurantsAttire_casual = st.selectbox("Casual Attire?", ["Yes", "No"])
+RestaurantsAttire_casual = 1 if RestaurantsAttire_casual == "Yes" else 0
+
+# Create the input feature array based on the user inputs
 user_input_features = pd.DataFrame([{
     'review_count_x': review_count_x,
     'average_stars': average_stars,
-    'user_AvgRestaurantCat_rating': user_AvgRestaurantCat_rating,
     'restaurant_review_count': restaurant_review_count,
     'latitude': latitude,
-    'longitude': longitude,
     'is_open': is_open,
+    'longitude': longitude,
     'Alcohol_full_bar': Alcohol_full_bar,
     'Alcohol_beer_and_wine': Alcohol_beer_and_wine,
     'RestaurantsDelivery': RestaurantsDelivery,
     'HasTV': HasTV,
-    'RestaurantsReservations': RestaurantsReservations,
     'RestaurantsTableService': RestaurantsTableService,
     'RestaurantsGoodForGroups': RestaurantsGoodForGroups,
+    'DriveThru': DriveThru,
+    'Parking_street': Parking_street,
+    'touristy': touristy,
+    'intimate': intimate,
+    'classy': classy,
+    'RestaurantsAttire_casual': RestaurantsAttire_casual,
+    'user_AvgRestaurantCat_rating': user_AvgRestaurantCat_rating,
+    'latenight': latenight,
     'sentiment_score': sentiment_score,
     'hour_of_day': hour_of_day,
     'is_weekend': is_weekend,
