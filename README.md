@@ -10,7 +10,7 @@ We first used the code in the **downsample.py** file to sample 1/5 of the review
 
 To further shrink the size of the dataset, we decided to only keep reviews about restaurants/food establishments in the **filter.py file**.
 
-The 
+The 2 Jupyter Notebook files contain the code we used for cleaning and proprocessing the filtered and downsampled restaurant data (**Cleaning.ipynb**) and to build the final KNN model (**FinalModel.ipynb**).
 ###
 
 
