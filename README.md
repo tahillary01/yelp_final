@@ -10,7 +10,7 @@ To further shrink the size of the dataset, we decided to only keep reviews about
 
 The 2 Jupyter Notebook files contain the code we used for cleaning and proprocessing the filtered and downsampled restaurant data (**Cleaning.ipynb**) and to build the final KNN model (**FinalModel.ipynb**).
 
-When deploying on Streamlit, we chose the GitHub option and set the **yelp_app.py** file as the main file path.
+When deploying on Streamlit, we chose the GitHub option and set the **yelp_app.py** file (which contains the code for the app UI) as the main file path.
 ###
 
 
